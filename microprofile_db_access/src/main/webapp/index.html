@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Carpooling</title>
+	<link rel="stylesheet" href="css/grading.css">
+	<link rel="stylesheet" href="css/site.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+		  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+		  crossorigin="" />
+	<!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+			integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+			crossorigin=""></script>
+
+	<script src="js/map.js"></script>
+	<script src="js/access.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/timeschedule.js"></script>
+	<script src="js/registrierung.js"></script>
+	<style>
+        #benutzername, .avatar, #logout {
+            display: inline-block;
+            vertical-align: central; /* Align elements vertically in the middle */
+            margin-right: 10px; /* Adjust the margin as needed */
+        }
+        .avatar {
+           
+			
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        #logout {
+            border-radius: 50%;
+			
+			background-color : red;
+        }
+	</style>
+</head>
+<body >
+	<div class="mainContainer">
+		<header class="padding row flex-wrap" id="headid">
+         <div class="topbar" id="topbarlogin">
+				<div id="überschrift">
+					<span style="white-space: nowrap">Carpooling</span>
+				</div>
+				<div id="loginbars">
+					<span style="white-space: nowrap"> Benutzer: <input
+						id="userNameLogin" type="text" name="userName" required />
+					</span> <span style="white-space: nowrap"> Password: <input
+						id="passwordLogin" type="password" name="password" required />
+					</span>
+					<button id="loginButton" type="button" style="width: 100px;" onclick="login_();">Anmelden</button>
+				</div>
+				
+				<div class="registrierung">
+					<span style="white-space: nowrap"><a id="registrierungsLink" href="#">Als neuer Benutzer registrieren</a></span>
+				</div>
+			</div>   
+        
+     <div class="topbarLoggedIn" id="loggedInTopBar" style="display: none;">
+       <div id="überschrifLoggedIn">
+         <span style="white-space: nowrap">Carpooling</span>
+       </div>
+       <div id="loggedInMenu">
+        <span style="white-space: nowrap"><a id="mitfahrgelegenheitLink" href="#">Mitfahrgelegenheiten</a></span>
+        <span style="white-space: nowrap"><a id="timescheduleLink" href="#">Mein Stundenplan</a></span>
+       </div>
+       <div id="loggedInInfo">
+        <span id="userNameSpan" style="white-space: nowrap"></span>
+        <div id="userPB"></div>
+        <button id="logOut" type="button" onclick="lougout_();" style="float: right; white-space: nowrap; margin-left: 5px;">Abmelden</button>
+       </div>
+       </div>  
+       
+        
+    </header>
+		<article id="art" >
+			<div id="mapid" style="height: 837px; width: 100%; "></div>
+			<div class="form-container" id="registration" style="display: none; background:white;" >
+				<h2 align="center">Registrierung</h2>
+				 <form id="registrationForm">
+						 <table >
+							 <tr>
+							   <td ><label for="vorname" >Vorname :</label></td>
+							   <td align="left"  ><input type="text" id="vorname" name="vorname"  oninput="capitalizeFirstLetter(this)" required></td>
+							 </tr>
+							 <tr>
+							   <td  ><label for="nachname">Nachname :</label></td>
+							   <td align="left" ><input type="text" id="nachname" name="nachname"  oninput="capitalizeFirstLetter(this)" required></td>
+							 </tr>
+						   <tr>
+							   <td  colspan="2">
+								   <span style="display: flex;">
+									   <label for="strasse" style="display: inline; margin-right: 55px;margin-top: 5px;" >Straße :</label>
+									   <input style="display: inline; width: 285px;margin-left: 30px;" type="text" id="strasse" name="strasse" oninput="capitalizeFirstLetter(this)" required>
+									   <label  style="display: inline;margin-top: 5px; margin-left: 14px;margin-right: 5px;" for="nr" >Nr :</label>
+									   <input style=" width: 100px;" type="number" id="nr" name="nr"  min="01"  required>
+								   </span>
+							   </td>
+							   
+							 </tr>
+						   <tr>
+							   <td  colspan="2">
+								   <span style="display: flex;">
+									   <label for="plz" style="display: inline; margin-right: 67px; margin-top: 5px;" >PLZ :</label>
+									   <input style="display: inline; width: 120px; margin-left: 30px;"  type="number" id="plz" name="plz"  size="5" onfocusout="validatePlzInput()" min="01067" max="99998" pattern="[0-9]{6}" placeholder="PLZ must be 5 numeric digits (e.g., 12345)" title="PLZ must be 5 numeric digits (e.g., 12345)" required>
+									   <label for="ort" style="display: inline;margin-top: 5px; margin-left: 14px;margin-right: 5px;" >Ort :</label>
+									   <input style="display: inline; width: 262px;" type="text" id="ort" name="ort" oninput="capitalizeFirstLetter(this)" required>
+								   </span>
+								   <div id="plzError" style="color: red;"></div>
+							   </td>
+							 </tr>
+							 <tr>
+							   <td  width="24%"><label for="email">E-Mail :</label></td>
+							   <td align="left" ><input type="email" id="email" name="email"  placeholder="@stud.hs-kl.de  Or  @stud.fs-kl.de"    required></td>
+							 </tr>
+						   <tr>
+							   <td ><label for="IDbenutzer">Benutzer-ID:</label></td>
+							   <td align="left" ><input type="text" id="IDbenutzer" name="IDbenutzer" oninput="capitalizeFirstLetter(this)"  required></td>
+							 </tr>
+							 <tr>
+							   <td  ><label for="pwd">Passwort :</label></td>
+							   <td align="left" ><input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" onkeyup="pwdcheck(); pwdcheck_();"  required></td>
+							 </tr>
+							 <tr>
+							   <td  ><label for="confirmPassword">Passwortsicherheit :</label></td>
+								 
+							   <td align="left" >
+								   <canvas id="pwdCanvas" width="255" height="20" style="border : 1px solid #d3d3d3;" > </canvas>
+								   <!--input type="password" id="confirmPassword" name="confirmPassword"  required--></td>
+							 </tr>
+							 <tr>
+							   <td colspan="2" align="center" >
+								 <input type="submit" value="Registrieren" onClick="addUser();">
+							   </td>  
+							 </tr>
+							 <tr>
+							   <td colspan="2" align="center">
+								 <button type="button" id="cancelButton" onclick="RefrechFormolar()">Abbrechen</button>
+							   </td>
+							 </tr>
+					   </table>
+					   <div id="passwordmessage"  class="passwordmessage" style="color: green;display: block;" ></div>
+				 </form>
+				 
+				</div>
+				
+		</article>
+		<div id="mySidenav" class="sidenav">
+			<div id="find-ride-container" style="width: 25em" >
+            	<div>
+				<h3>Eine Mitfahrgelegenheit suchen</h3>
+				<table>
+					<tr>
+						<td><label for="hinfahrtButton">nur Hinfahrt</label></td>
+						<td><input type="radio" id="hinfahrtButton" name="fahrt"
+							value="Hinfahrt"></td>
+					<tr>
+						<td><label for="rückfahrtButton">nur Rückfahrt</label></td>
+						<td><input type="radio" id="rückfahrtButton" name="fahrt"
+							value="Rückfahrt"></td>
+					</tr>
+					<tr>
+						<td><label for="fahrtenButton">Hin-/Rückfahrt</label></td>
+						<td><input type="radio" id="fahrtenButton" name="fahrt" checked="checked"
+							value="Hin-/Rückfahrt"></td>
+					</tr>
+					<tr>
+						<td><label for="umkreisInput">Umkreis in km</label></td>
+						<td><input type="number" id="umkreisInput" name="fahrt"
+							value="Umkreis"></td>
+					</tr>
+					<tr>
+						<td><label for="wochentagInput">Wochentag</label></td>
+						<td><select id="wochentageDropDown" name="fahrt">
+								<option value="1">Montag</option>
+								<option value="2">Dienstag</option>
+								<option value="3">Mittwoch</option>
+								<option value="4">Donnerstag</option>
+								<option value="5">Freitag</option>
+								<option value="6">Samstag</option>
+								<option value="7">Sonntag</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td><label for="ankunftszeitInput">späteste Ankunft
+								Hinfahrt (-1h)</label></td>
+						<td><input type="time" id="ankunftszeitInput" name="fahrt"
+							value="Ankunftszeit"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><button id="searchRide" type="button">Suchen</button></td>
+					</tr>
+				</table>
+				<hr />
+				<div id="out">
+					<ul id="listCoordinates">
+					</ul>
+				</div>
+			</div> 
+        </div>
+        <div id="searchResults" style="display: none">
+        
+        </div>
+		</div>
+	</div>
+	<script>
+        function openNav() {
+			document.getElementById("mySidenav").style.width = "25%";
+            //document.getElementById("foot").style.marginRight = "25%";
+            document.getElementById("art").style.marginRight = "25%";
+            document.getElementById("headid").style.marginRight = "25%";
+        }
+
+        function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+           // document.getElementById("foot").style.marginRight = "0";
+            document.getElementById("art").style.marginRight = "0";
+            document.getElementById("headid").style.marginRight = "0";
+        }
+        var registrationLink = document.getElementById('registrierungsLink');
+        var registrationFormContainer = document.getElementById('registration');
+
+        registrationLink.addEventListener('click', function (event) {
+            event.preventDefault(); // Verhindert das Navigieren zu einer anderen Seite
+			
+			registrationFormContainer.style.display = 'block';
+			 
+            
+        });
+
+        
+			document.getElementById('cancelButton').addEventListener('click', function() {
+            document.getElementById('registrationForm').reset();
+			registrationFormContainer.style.display = 'none';
+            });
+
+
+			
+    </script> 
+	<script>
+		 
+				
+				
+	</script>
+</body>
+
+</html>

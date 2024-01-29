@@ -1,0 +1,181 @@
+.mainContainer {
+    height: 100%;
+    display: grid;
+    grid-template-rows:  min-content 2fr min-content;
+    grid-template-columns: 100%;
+    grid-template-areas:
+    "header"
+    "article"
+    "aside";
+}
+
+@media screen and (min-width: 44em) {
+    .mainContainer {
+        height: 100%;
+        display: grid;
+        grid-template-rows: min-content 1fr;
+        grid-template-columns: 1fr min-content;
+        grid-template-areas:
+        "header header"
+        "article  aside";
+    }
+}
+
+/* .topbarLoggedIn{ */
+/* 	display: inline;  */
+/* 	grid-template-rows: 100%;  */
+/* 	grid-template-columns: 1fr 2fr ;  */
+/* 	grid-template-areas: "überschriftLoggedIn loggedInMenu loggedInInfo"; */
+/* } */
+
+/* #loggedInInfo{ */
+/* 	display: grid; */
+/* 	grid-template-areas: "userNameSpan userPB logOut";  */
+/* } */
+
+.topbarLoggedIn {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+}
+
+#loggedInInfo {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  margin-left: auto; /* Push #loggedInInfo to the right */
+}
+
+#loggedInMenu {
+  display: flex;
+  gap: 20px; /* Adjust the gap between menu items */
+}
+#userNameSpan{
+	margin-right: 5px; 
+}
+
+#userPB{
+	margin-right: 5px; 
+}
+
+#tdWochentag{
+	text-align: center;
+}
+
+#tdBeginn{
+	text-align: center; 
+}
+
+#tdEnde{
+	text-align: center; 
+}
+
+#timescheduleTabelle{
+	line-height: normal;
+}
+
+#timeScheduleMargin{
+	margin-top: 35px; 
+	margin-left: 20px; 
+}
+
+#timeScheduleDIV{
+	width: 100%; 
+	height: 100%; 
+	z-index: 1000;
+	background-color:  #f3e2a9;
+	grid-area: main; 
+}
+
+#registration{
+	position: absolute;
+    top: 25%;
+    left: 30%;
+    width: auto;
+    padding: 15px;
+    border: 3px solid #2c3d03;
+    background: #ffe6b3;
+    z-index: 1000;
+	box-shadow: 0 1px 5px #27272780;
+}
+
+header {
+	padding: 20px; 
+    background-color: #d8d8d8;
+    grid-area: header;
+    z-index: 1000;
+    box-shadow: 0 1px 5px #27272780;
+    min-height: 1.5rem;
+}
+
+article {
+    background-color: white; 
+     grid-area: main; 
+}
+
+aside {
+    background-color: #f3e2a9;
+    grid-area: aside;
+    z-index: 800;
+    box-shadow: 0 1px 5px #27272780;
+    overflow-y: auto;
+    overflow-x: auto;/*hna*/
+    
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.topbar {
+	display: grid; 
+	grid-template-rows: 100%; 
+	grid-template-columns: 1fr 2fr; 
+	grid-template-areas: "überschrift loginbars registrierung";
+}
+
+.hidden {
+    display: none;
+}
+
+.errorColor{
+	background-color: #FF0000;
+}
+
+.resultDiv{
+	background-color: #FFFFFF;
+	padding: 10px;  
+	display: grid; 
+	grid-template-areas: "pictureDiv dataDiv"; 
+	grid-template-columns: 1fr 3fr; 
+	margin: 6px; 
+}
+
+.pictureDiv{
+	grid-area: pictureDiv; 
+	background-color: #FFFFFF;
+	margin-left: auto; 
+	margin-right: auto; 
+	display: block;  
+}
+
+.dataDiv{
+	background-color: #FFFFFF; 
+	grid-area: dataDiv; 
+}
+
+#ort {
+	width: 180px;
+}
+
+.liStyle{
+	list-style-type: none; 
+	padding: 0; 
+	margin: 0; 
+}
