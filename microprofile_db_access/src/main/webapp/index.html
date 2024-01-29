@@ -20,25 +20,7 @@
 	<script src="js/index.js"></script>
 	<script src="js/timeschedule.js"></script>
 	<script src="js/registrierung.js"></script>
-	<!--<style>
-        #benutzername, .avatar, #logout {
-            display: inline-block;
-            vertical-align: central; /* Align elements vertically in the middle */
-            margin-right: 10px; /* Adjust the margin as needed */
-        }
-        .avatar {
-           
-			
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-        }
-        #logout {
-            border-radius: 50%;
-			
-			background-color : red;
-        }
-	</style>-->
+	
 </head>
 <body style="margin: 0%;">
 	<div class="mainContainer">
@@ -66,7 +48,7 @@
    
        
         <span style="white-space: nowrap; margin-right: 8%; font-size: 20px;" onclick="openNav();"><a id="mitfahrgelegenheitLink" href="#">Mitfahrgelegenheiten</a></span>
-        <span style="white-space: nowrap; font-size: 20px;"><a id="timescheduleLink" href="#" onclick="openNav();">Mein Stundenplan</a></span>
+        <span style="white-space: nowrap; font-size: 20px;"><a id="timescheduleLink" href="#"  >Mein Stundenplan</a></span>
       
        
         <span id="userNameSpan" style="white-space: nowrap"></span>
@@ -85,19 +67,19 @@
                     <table>
                         <tr>
                             <td><label for="vorname">Vorname :</label></td>
-                            <td align="left"><input type="text" id="vorname" name="vorname" oninput="capitalizeFirstLetter(this)" required></td>
+                            <td align="left"><input type="text" id="firstName" name="firstName" oninput="capitalizeFirstLetter(this)" required></td>
                         </tr>
                         <tr>
                             <td><label for="nachname">Nachname :</label></td>
-                            <td align="left"><input type="text" id="nachname" name="nachname" oninput="capitalizeFirstLetter(this)" required></td>
+                            <td align="left"><input type="text" id="lastName" name="lastName" oninput="capitalizeFirstLetter(this)" required></td>
                         </tr>
                         <tr>
                             <td colspan="2">
                                 <span style="display: flex;">
                                     <label for="strasse" style="display: inline; margin-right: 55px;margin-top: 5px;">Straße :</label>
-                                    <input style="display: inline; width: 285px;margin-left: 30px;" type="text" id="strasse" name="strasse" oninput="capitalizeFirstLetter(this)" required>
+                                    <input style="display: inline; width: 285px;margin-left: 30px;" type="text" id="straße" name="straße" oninput="capitalizeFirstLetter(this)" required>
                                     <label style="display: inline;margin-top: 5px; margin-left: 14px;margin-right: 5px;" for="nr">Nr :</label>
-                                    <input style=" width: 100px;" type="number" id="nr" name="nr" min="01" required>
+                                    <input style=" width: 100px;" type="number" id="number" name="number" min="01" required>
                                 </span>
                             </td>
 
@@ -119,11 +101,11 @@
                         </tr>
                         <tr>
                             <td><label for="IDbenutzer">Benutzer-ID:</label></td>
-                            <td align="left"><input type="text" id="IDbenutzer" name="IDbenutzer" oninput="capitalizeFirstLetter(this)" required></td>
+                            <td align="left"><input type="text" id="benutzerid" name="benutzerid" oninput="capitalizeFirstLetter(this)" required></td>
                         </tr>
                         <tr>
                             <td><label for="pwd">Passwort :</label></td>
-                            <td align="left"><input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" onkeyup="pwdcheck(); pwdcheck_();" required></td>
+                            <td align="left"><input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" onkeyup="pwdcheck(); pwdcheck_();" required></td>
                         </tr>
                         <tr>
                             <td><label for="confirmPassword">Passwortsicherheit :</label></td>
@@ -149,8 +131,39 @@
 
             </div>
 
+            <div id="timeScheduleDIV" style="height: 837px; display: none; padding: 50px 50px;  background-color: #ffe6b3;" >
+                <div id="timeScheduleMargin"> 
+                <div>
+                <h1>Meine Adresse</h1>
+                <span id="AdresseDIV"></span>
+                </div>
+                
+                <div>
+                <h4 id="timeTableAdress"></h4>  
+                <h1>Mein Stundenplan</h1>  
+                </div>
+             
+                <div>
+                <table id="timescheduleTabelle">
+                <tr><td><button id="safeTimeschedule" type="button">Speichern</button></td></tr>
+                <tr>
+                    <td id="tdWochentag"><span><h3>Wochentag</h3></span></td>
+                    <td id="tdBeginn" style="padding-left: 10px;"><span><h3>Beginn</h3></span></td>
+                    <td id="tdEnde"><span><h3>Ende</h3></span></td>
+                </tr>
+                <tr><td>Montag</td><td><input id="mondayBegin" type="time"></td><td><input id="mondayEnd" type="time"></td></tr>
+                <tr><td>Dienstag</td><td><input id="tuesdayBegin" type="time"></td><td><input id="tuesdayEnd" type="time"></td></tr>
+                <tr><td>Mittwoch</td><td><input id="wednesdayBegin" type="time"></td><td><input id="wednesdayEnd" type="time"></td></tr>
+                <tr><td>Donnerstag</td><td><input id="thursdayBegin" type="time"></td><td><input id="thursdayEnd" type="time"></td></tr>
+                <tr><td>Freitag</td><td><input id="fridayBegin" type="time"></td><td><input id="fridayEnd" type="time"></td></tr>
+                <tr><td>Samstag</td><td><input id="saturdayBegin" type="time"></td><td><input id="saturdayEnd" type="time"></td></tr>
+                <tr><td>Sonntag</td><td><input id="sundayBegin" type="time"></td><td><input id="sundayEnd" type="time"></td></tr>
+                </table> 
+                </div>
+                </div>
+                </div>
 
-            <div id="mySidenav" class="sidenav">
+            <div id="mySidenav" class="sidenav" style="margin-left: 30px;">
                 <div id="find-ride-container" style="width: 25em; ">
                     <div style="padding-left: 30px;">
                         <h3>Eine Mitfahrgelegenheit suchen</h3>
@@ -211,11 +224,15 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><button id="searchRide" type="button">Suchen</button></td>
+                                <td><button id="searchRide" type="button" onclick="timeschedule_();">Suchen</button></td>
+                            </tr>
+                            <tr >
+                                <td colspan="2"><hr  ></td>
+                                 
                             </tr>
                         </table>
                     </div>
-                    <hr />
+                    
                     <div id="out">
                         <ul id="listCoordinates">
                         </ul>
@@ -229,7 +246,13 @@
 	
 	   
 	<script>
-		
+		function timeschedule_(){
+            closeNav();
+            document.getElementById("mapid").style.display="none";
+            document.getElementById("timeScheduleDIV").style.display="block";
+
+
+        }
 		function checkPassword (passwd)
 {
 					var len = passwd.length;

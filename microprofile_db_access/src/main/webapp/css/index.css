@@ -82,10 +82,10 @@
 	height: 100%; 
 	z-index: 1000;
 	background-color:  #f3e2a9;
-	grid-area: main; 
+	grid-area: article; 
 }
 
-#registration{
+#registration, #timeScheduleDIV {
 	position: absolute;
     top: 25%;
     left: 30%;
@@ -107,7 +107,7 @@ header {
 }
 
 article {
-    background-color: white; 
+    background-color: #f3e2a9; 
      grid-area: main; 
 }
 

@@ -1,12 +1,12 @@
-window.addEventListener("load", initialisation );
+//window.addEventListener("load", initialisation );
 
-let myMap;
+//let myMap;
 var homeMarker;
 var selectedMarker; 
 var selectedText;
 var markerStorage = new Map(); 
 function initialisation(){
-	document.getElementById("registrierungAbbrechen").addEventListener("click", hideRegistrierung);
+	document.getElementById("cancelButton").addEventListener("click", hideRegistrierung);
     document.getElementById("registrierungsLink").addEventListener("click", showRegistrierung); 
     document.getElementById("timescheduleLink").addEventListener("click", showTimeSchedule);
     document.getElementById("mitfahrgelegenheitLink").addEventListener("click", showMitfahrgelegenheit);
@@ -22,10 +22,10 @@ function initialisation(){
     hideRegistrierung();
     hideTimeSchedule(); 
 }
-	initmap();
-	reload();
+	//initmap();
+	//reload();
 }
-function initmap() {
+/*function initmap() {
     myMap = L.map('mapid').setView([49.250723, 7.377122], 12);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -67,7 +67,7 @@ let	homeIcon = new L.Icon({
 		popupAnchor: [1, -34], 
 		shadowSize: [41, 41]
 	}); 
-
+*/
 function showMitfahrgelegenheit(){
 	hideTimeSchedule();
 	showSearch(); 
@@ -93,15 +93,15 @@ function hideSearch(){
 
 
 function hideRegistrierung() { 
-	document.getElementById("registrierungAbbrechen").disabled = true;
+	document.getElementById("cancelButton").disabled = true;
 	document.getElementById("registrierungsLink").disabled = false; 
-	setVisibility("registrierungsContainer",false);
+	setVisibility("registration",false);
 }
 
 function showRegistrierung() {
-	document.getElementById("registrierungAbbrechen").disabled = false; 
+	document.getElementById("cancelButton").disabled = false; 
 	document.getElementById("registrierungsLink").disabled = true;
-	setVisibility("registrierungsContainer",true);  
+	setVisibility("registration",true);  
 }
 
 function showTimeSchedule() {

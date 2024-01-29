@@ -1,5 +1,6 @@
 window.addEventListener("load", initMap);
 window.addEventListener("load", initIcons);
+window.addEventListener("load", initialisation );
 
 
 // Global Variable for the map
@@ -9,7 +10,26 @@ let blueIcon;
 
 
 
-
+function initialisation(){
+	document.getElementById("registrierungAbbrechen").addEventListener("click", hideRegistrierung);
+    document.getElementById("registrierungsLink").addEventListener("click", showRegistrierung); 
+    document.getElementById("timescheduleLink").addEventListener("click", showTimeSchedule);
+    document.getElementById("mitfahrgelegenheitLink").addEventListener("click", showMitfahrgelegenheit);
+    document.getElementById("loginButton").addEventListener("click", login); 
+    document.getElementById("logOut").addEventListener("click", logout);
+    document.getElementById("registrierungBestätigen").addEventListener("click", saveImage);
+    document.getElementById("searchRide").addEventListener("click", search); 
+    
+    let token = sessionStorage.getItem('uuidToken');
+    if(token == null) {
+	hideLoggedInMenu();
+    hideSearch();
+    hideRegistrierung();
+    hideTimeSchedule(); 
+}
+	//initmap();
+	//reload();
+}
 // Initialisierung der Karte
 function initMap() {
 	myMap = L.map('mapid').setView([49.250723, 7.377122], 13);
@@ -24,6 +44,8 @@ function initMap() {
 	
 	// registriere Callback-Methode auf die Marker
 	markers = L.layerGroup().addTo(myMap);
+
+
 }
 
 // Initialisiert die Icons
@@ -45,6 +67,14 @@ function initIcons() {
 		popupAnchor: [1, -34],
 		shadowSize: [41, 41]
 	});
+	let	homeIcon = new L.Icon({
+		iconUrl: './icon/marker-icon-home.png', 
+		shadowUrl: './icon/marker-shadow.png',
+		iconSize: [25, 41], 
+		iconAnchor: [12, 41],
+		popupAnchor: [1, -34], 
+		shadowSize: [41, 41]
+	}); 
 }
 
 // +++++++++++++++++++++++++++++++++++++++++++++++
