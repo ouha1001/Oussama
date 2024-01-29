@@ -22,10 +22,10 @@ function initialisation(){
     hideRegistrierung();
     hideTimeSchedule(); 
 }
-	initMap();
+	initmap();
 	reload();
 }
-function initMap() {
+function initmap() {
     myMap = L.map('mapid').setView([49.250723, 7.377122], 12);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {

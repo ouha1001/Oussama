@@ -35,7 +35,7 @@
 
 .topbarLoggedIn {
   display: flex;
-  align-items: center; /* Align items vertically in the center */
+  align-items: first baseline; /* Align items vertically in the center */
 }
 
 #loggedInInfo {

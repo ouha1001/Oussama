@@ -135,7 +135,7 @@ footer {
     background-color: #ffe6b3;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    /*padding-top: 60px;*/
 }
 
     .sidenav a {
@@ -162,6 +162,7 @@ footer {
 @media screen and (max-height: 450px) {
     .sidenav {
         padding-top: 15px;
+        padding-left: 10px;
     }
 
         .sidenav a {
