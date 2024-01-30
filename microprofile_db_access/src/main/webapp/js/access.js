@@ -14,7 +14,7 @@ function init()
     document.getElementById("registrationForm").addEventListener("submit", addUser);
     document.getElementById("commentButton").addEventListener("click", Commentieren);
 
-    initMap();
+    initmap();
     initIcons();
     //getAllPoi();
 
@@ -157,7 +157,7 @@ function emailcheck(){
 				document.getElementById("loggedInTopBar").style.display = "block";
 				document.getElementById("topbarlogin").style.display = "none";
 
-				document.querySelector("#benutzername").innerHTML = "Oussama Hamioui";
+				document.querySelector("#userNameSpan").innerHTML = "Oussama Hamioui";
 			} else {
 				alert("Login failed !!");
 			}

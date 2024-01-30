@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Carpooling</title>
-	<link rel="stylesheet" href="css/grading.css">
-	<link rel="stylesheet" href="css/site.css">
 	
+	<link rel="stylesheet" href="css/site.css">
+    
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
 		  integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
 		  crossorigin="" />
@@ -15,11 +15,10 @@
 			integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
 			crossorigin=""></script>
 
-	<script src="js/map.js"></script>
-	<script src="js/access.js"></script>
+	
+	
 	<script src="js/index.js"></script>
-	<script src="js/timeschedule.js"></script>
-	<script src="js/registrierung.js"></script>
+	
 	
 </head>
 <body style="margin: 0%;">
@@ -27,47 +26,48 @@
 		<header class="padding row flex-wrap" id="headid">
          <div class="topbar" id="topbarlogin"  >
 				
-					<span style="white-space: nowrap; margin-right: 20%; font-size: 20px;">Carpooling</span>
+					<span style="white-space: nowrap; margin-right: 10%; font-size: 20px;  font-weight: bold;">Carpooling</span>
 				
 					<span style="white-space: nowrap"> Benutzer: <input
 						id="userNameLogin" type="text" name="userName" style="margin-right: 10PX;" required />
 					</span> <span style="white-space: nowrap"> Password: <input
 						id="passwordLogin" type="password" name="password"  style="margin-right: 10PX;" required />
 					</span>
-					<button id="loginButton" type="button" style="width: 100px;" onclick="login_();">Anmelden</button>
+					<button id="loginButton" type="button" style="width: 100px;" >Anmelden</button>
 				
 				
 				
-					<span style="float: right; white-space: nowrap"><a id="registrierungsLink" href="#">Als neuer Benutzer registrieren</a></span>
+					<span style="float: right; white-space: nowrap"><a id="registrierungsLink" href="#" >Als neuer Benutzer registrieren</a></span>
 				
 			</div>   
         
      <div class="topbarLoggedIn" id="loggedInTopBar" style="display: none;" >
-       
-         <span style="white-space: nowrap; margin-right: 20%; font-size: 20px;">Carpooling</span>
-   
-       
-        <span style="white-space: nowrap; margin-right: 8%; font-size: 20px;" onclick="openNav();"><a id="mitfahrgelegenheitLink" href="#">Mitfahrgelegenheiten</a></span>
-        <span style="white-space: nowrap; font-size: 20px;"><a id="timescheduleLink" href="#"  >Mein Stundenplan</a></span>
-      
-       
-        <span id="userNameSpan" style="white-space: nowrap"></span>
-        <span id="userPB"></span>
-        <button id="logOut" type="button" onclick="lougout_();" style="float: right; white-space: nowrap; margin-left: 5px;">Abmelden</button>
-       
+         <div id="loggedInInfo">
+             <span style="white-space: nowrap; margin-right: 10%; font-size: 20px;  font-weight: bold;">Carpooling</span>
+
+
+             <span style="white-space: nowrap; margin-right: 8%; font-size: 20px;" onclick="openNav();"><a id="mitfahrgelegenheitLink" href="#">Mitfahrgelegenheiten</a></span>
+             <span style="white-space: nowrap; font-size: 20px;"><a id="timescheduleLink" href="#">Mein Stundenplan</a></span>
+
+             <div id="logininfos">
+                 <span id="userNameSpan" style="white-space: nowrap; float: right; font-size: 20px;"></span>
+                 <span id="userPB" style="white-space: nowrap; float: right;"></span>
+                 <button id="logOut" type="button"  style="float: right; white-space: nowrap; margin-left: 5px;">Abmelden</button>
+             </div>
+         </div>
        </div>  
        
         
     </header>
         <article id="art">
-            <div id="mapid" style="height: 837px; width: 100%; "></div>
+            <div id="mapid" style="height: 908px; width: 100%; "></div>
             <div class="form-container" id="registration" style="display: none; background:white;">
                 <h2 align="center">Registrierung</h2>
                 <form id="registrationForm">
                     <table>
                         <tr>
                             <td><label for="vorname">Vorname :</label></td>
-                            <td align="left"><input type="text" id="firstName" name="firstName" oninput="capitalizeFirstLetter(this)" required></td>
+                            <td align="left" ><input type="text" id="firstName" name="firstName" oninput="capitalizeFirstLetter(this)" required></td>
                         </tr>
                         <tr>
                             <td><label for="nachname">Nachname :</label></td>
@@ -118,7 +118,7 @@
                         <tr>
                             <td colspan="2" align="center">
                                 <button type="button" id="Registrierenbtn" onClick="addUser();">Registrieren</button>
-                                <button type="button" id="cancelButton" onclick="RefrechFormolar()">Abbrechen</button>
+                                <button type="button" id="cancelButton" >Abbrechen</button>
                             </td>
                         </tr>
                         <tr>
@@ -148,7 +148,7 @@
                 <tr><td><button id="safeTimeschedule" type="button">Speichern</button></td></tr>
                 <tr>
                     <td id="tdWochentag"><span><h3>Wochentag</h3></span></td>
-                    <td id="tdBeginn" style="padding-left: 10px;"><span><h3>Beginn</h3></span></td>
+                    <td id="tdBeginn" ><span><h3>Beginn</h3></span></td>
                     <td id="tdEnde"><span><h3>Ende</h3></span></td>
                 </tr>
                 <tr><td>Montag</td><td><input id="mondayBegin" type="time"></td><td><input id="mondayEnd" type="time"></td></tr>
@@ -192,8 +192,7 @@
                             <tr>
                                 <td><label for="umkreisInput">Umkreis in km</label></td>
                                 <td>
-                                    <input type="number" id="umkreisInput" name="fahrt"
-                                           value="Umkreis">
+                                    <input type="number" id="umkreisInput" name="fahrt">
                                 </td>
                             </tr>
                             <tr>
@@ -219,7 +218,7 @@
                                 </td>
                                 <td>
                                     <input type="time" id="ankunftszeitInput" name="fahrt"
-                                           value="Ankunftszeit">
+                                           >
                                 </td>
                             </tr>
                             <tr>
@@ -246,6 +245,7 @@
 	
 	   
 	<script>
+        
 		function timeschedule_(){
             closeNav();
             document.getElementById("mapid").style.display="none";
@@ -321,7 +321,7 @@ function pwdcheck() {
             document.getElementById("art").style.marginRight = "0";
             //document.getElementById("headid").style.marginTop = "0";
         }
-        var registrationLink = document.getElementById('registrierungsLink');
+        /*var registrationLink = document.getElementById('registrierungsLink');
         var registrationFormContainer = document.getElementById('registration');
 
         registrationLink.addEventListener('click', function (event) {
@@ -336,7 +336,7 @@ function pwdcheck() {
 			document.getElementById('cancelButton').addEventListener('click', function() {
             document.getElementById('registrationForm').reset();
 			registrationFormContainer.style.display = 'none';
-            });
+            });*/
 
 
 			

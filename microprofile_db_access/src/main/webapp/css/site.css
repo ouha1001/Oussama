@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
-footer { display: none; }
-
 /* .mainContainer {  */
 /*   height:100vh;  */
 /*   display: grid;  */
-/*  /* grid-template-rows: auto auto auto; */ */
+/*  /* grid-template-rows: auto auto auto; */
+*/
 /*   grid-template-columns: 100%;  */
 /*   grid-template-areas:   */
 /*     "login"  */
@@ -13,7 +12,6 @@ footer { display: none; }
 /*     "rating"  */
 /*   ;  */
 /* }  */
-
 /* @media screen and (min-width: 44.001em) {  */
 /*   footer { display: block; } */
 /*   .mainContainer {  */
@@ -26,61 +24,102 @@ footer { display: none; }
 /*       "userRating userRating "  */
 /*     ;  */
 /*   }  */
-  
 /* } */
+.topbarLoggedIn {
+    display: flex;
+    
+    align-items: first baseline; /* Align items vertically in the center */
+}
 
-#loginInfo{
-  width: 100%;
+#loggedInInfo {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    margin-left: auto; /* Push #loggedInInfo to the right */
+}
+#logininfos {
+    padding: 0px;
+    display: flex;
+    align-items: baseline; /* Align items vertically in the center */
+    margin-left: auto; /* Push #loggedInInfo to the right */
+}
+#userNameSpan {
+    margin-right: 5px;
+    
+}
 
+
+#userPB {
+    margin-right: 5px;
+}
+#tdWochentag {
+    text-align: center;
+}
+
+#tdBeginn {
+    text-align: center;
+}
+
+#tdEnde {
+    text-align: center;
+}
+
+#timescheduleTabelle {
+    line-height: normal;
+}
+
+#timeScheduleMargin {
+    margin-top: 35px;
+    margin-left: 20px;
+}
+
+#timeScheduleDIV {
+    
+    height: 100%;
+    z-index: 1000;
+    background-color: #f3e2a9;
+    grid-area: article;
+}
+
+#registration {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    width: auto;
+    padding: 15px;
+    border: 3px solid #2c3d03;
+    background: #ffe6b3;
+    z-index: 1000;
+    box-shadow: 0 1px 5px #27272780;
 }
 #registrationLink{
 	text-align: right;
 }
+
 header {
-	padding: 15px;
-	border-bottom: 1px solid #fff;
-	background-color: #D8D8D8;
-    grid-area: login;
+    padding: 15px;
+    border-bottom: 1px solid #fff;
+    background-color: #D8D8D8;
+    min-height: 1.5rem;
 }
-ffe6b3
 
 article {
 	
 	border-bottom: 2px solid #fff;
     background: wheat;
-    grid-area: map;
+    
 
 }
 
 
-
-
-footer {
-	padding: 15px;
-	border-bottom: 2px solid #fff;
-    background: #D8D8D8;
-    grid-area: userRating;
-}
-
-#bewertungsDiv {
-	width: 300px; 
-	background: #F9EECF; 
-	border: 1px solid black; 
-	text-align: left;
-  padding: 15px; 
-}
-
-
-#registration {
+/*#registration {
 	position: absolute;
     top: 25%;
     left: 30%;
     width: auto;
     padding: 15px;
-    /*border: 3px solid #2c3d03;*/
-    /*background: ;*/
+    border: 3px solid #2c3d03;
     z-index: 1000;    
-}
+}*/
 
 .form-container {
   position: absolute; top: 70px; left: 50px;   border: 3px solid #2c3d03; background: #ffe6b3; z-index: 1000; width: auto;
@@ -99,23 +138,17 @@ footer {
   margin-left: 10px;
   font-size: 16px;	
 }
-#login_,#pwd,#confirmPassword,#vorname,#nachname,#email,#IDbenutzer,#strasse,#nr,#plz,#ort{
-  height: 25px;
-  width: 98.5%;
-  font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
-  font-size: 14px;
+#login_, #password, #confirmPassword, #firstName, #lastName, #email, #benutzerid, #straße, #number, #plz, #ort {
+    height: 25px;
+    width: 98.5%;
+    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+    font-size: 14px;
 }
-/* .form-container input[type="submit"] ,  #cancelButton{  */
-/*         padding: 10px; */
-/*         background-color: #4CAF50; */
-/*         color: white; */
-/*   width: 100%; */
-/*   font-size: 13px;      */
-/*  } */
-#lab_user,#username ,#lab_pwd ,#password , #Btnanmelden,#registrationLink {
-  font-size: 20px;
+
+#lab_user, #username, #lab_pwd, #Btnanmelden, #registrationLink {
+    font-size: 20px;
 }
-#accessError {
+#passwordmessage {
     color: red;
 }
 

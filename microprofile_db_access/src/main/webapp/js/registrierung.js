@@ -1,40 +1,40 @@
-window.addEventListener("load", () => {
+//window.addEventListener("load", () => {
 	
-    var registerTable = document.querySelector("#registerTable");
-	var firstNameCon = document.querySelector("#firstName");
-	var lastNameCon = document.querySelector("#lastName");
-	var straßeCon = document.querySelector("#straße");
-	var numberCon = document.querySelector("#number");
-	var plzCon = document.querySelector("#plz");
-	var ortCon = document.querySelector("#ort");
-	var emailCon = document.querySelector("#email"); 
-	var benutzeridCon = document.querySelector("#benutzerid"); 
-	var input = document.querySelector("#password");
+//    var registerTable = document.querySelector("#registerTable");
+//	var firstNameCon = document.querySelector("#firstName");
+//	var lastNameCon = document.querySelector("#lastName");
+//	var straßeCon = document.querySelector("#straße");
+//	var numberCon = document.querySelector("#number");
+//	var plzCon = document.querySelector("#plz");
+//	var ortCon = document.querySelector("#ort");
+//	var emailCon = document.querySelector("#email"); 
+//	var benutzeridCon = document.querySelector("#benutzerid"); 
+//	var input = document.querySelector("#password");
 	
-	registerTable.addEventListener("keyup",function() {
-		var firstName = firstNameCon.value; 
-		var lastName = lastNameCon.value; 
-		var straße = straßeCon.value; 
-		var number = numberCon.value; 
-		var plz = plzCon.value; 
-		var ort = ortCon.value; 
-		var email = emailCon.value; 
-		var benutzerid = benutzeridCon.value; 
-		var password = input.value; 
-		checkLength(firstName,lastName,straße,number,plz,ort,email,benutzerid,password);
-		checkFirstName(firstName); 
-		checkLastName(lastName); 
-		checkPLZ(plz);
-		checkEmail(email);
-		escherPLZ();
-	},false);
+//	registerTable.addEventListener("keyup",function() {
+//		var firstName = firstNameCon.value; 
+//		var lastName = lastNameCon.value; 
+//		var straße = straßeCon.value; 
+//		var number = numberCon.value; 
+//		var plz = plzCon.value; 
+//		var ort = ortCon.value; 
+//		var email = emailCon.value; 
+//		var benutzerid = benutzeridCon.value; 
+//		var password = input.value; 
+//		checkLength(firstName,lastName,straße,number,plz,ort,email,benutzerid,password);
+//		//checkFirstName(firstName); 
+//		//checkLastName(lastName); 
+//		//checkPLZ(plz);
+//		//checkEmail(email);
+//		escherPLZ();
+//	},false);
 	
-	input.addEventListener("keyup",function() {
-			var password = input.value;
-			checkPassword(password);
-			},false);	
-	document.getElementById("benutzerid").addEventListener("keyup", checkUsernameAvailable);
-})
+//	input.addEventListener("keyup",function() {
+//			var password = input.value;
+//			checkPassword(password);
+//			},false);	
+//	document.getElementById("benutzerid").addEventListener("keyup", checkUsernameAvailable);
+//})
 
 function clearPlz() {
 	let plz = document.getElementById('ort'); 
